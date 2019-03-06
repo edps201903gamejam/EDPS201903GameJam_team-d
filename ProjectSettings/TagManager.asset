@@ -3,7 +3,12 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
+<<<<<<< HEAD
   tags: []
+=======
+  tags:
+  - Floor
+>>>>>>> キャラの動きと摩擦関連設定
   layers:
   - Default
   - TransparentFX
@@ -13,7 +18,11 @@ TagManager:
   - UI
   - 
   - 
+<<<<<<< HEAD
   - 
+=======
+  - PostProcessing
+>>>>>>> キャラの動きと摩擦関連設定
   - 
   - 
   - 
