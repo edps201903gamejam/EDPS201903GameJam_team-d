@@ -4,18 +4,9 @@
 EditorSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 7
-<<<<<<< HEAD
   m_ExternalVersionControlSupport: Hidden Meta Files
   m_SerializationMode: 2
   m_LineEndingsForNewScripts: 1
-=======
-  m_ExternalVersionControlSupport: Visible Meta Files
-  m_SerializationMode: 2
-  m_LineEndingsForNewScripts: 2
->>>>>>> キャラの動きと摩擦関連設定
-  m_ExternalVersionControlSupport: Visible Meta Files
-  m_SerializationMode: 2
-  m_LineEndingsForNewScripts: 2
   m_DefaultBehaviorMode: 0
   m_SpritePackerMode: 0
   m_SpritePackerPaddingPower: 1
@@ -23,24 +14,9 @@ EditorSettings:
   m_EtcTextureFastCompressor: 1
   m_EtcTextureNormalCompressor: 2
   m_EtcTextureBestCompressor: 4
-<<<<<<< HEAD
-<<<<<<< HEAD
   m_ProjectGenerationIncludedExtensions: txt;xml;fnt;cd;asmdef;rsp
-=======
-  m_ProjectGenerationIncludedExtensions: txt;xml;fnt;cd;asmdef
->>>>>>> キャラの動きと摩擦関連設定
-=======
-  m_ProjectGenerationIncludedExtensions: txt;xml;fnt;cd;asmdef
->>>>>>> f5aa9d3e07980e7896258982cec703ef69c37817
   m_ProjectGenerationRootNamespace: 
   m_UserGeneratedProjectSuffix: 
   m_CollabEditorSettings:
     inProgressEnabled: 1
-<<<<<<< HEAD
-<<<<<<< HEAD
-=======
   m_EnableTextureStreamingInPlayMode: 1
->>>>>>> キャラの動きと摩擦関連設定
-=======
-  m_EnableTextureStreamingInPlayMode: 1
->>>>>>> f5aa9d3e07980e7896258982cec703ef69c37817
