@@ -5,9 +5,11 @@ using UnityEngine;
 public class Player : MonoBehaviour {
     float jumpPower = 380f;
     Rigidbody rb;
+	GameController GCScrpit;
 	// Use this for initialization
 	void Start () {
         rb = GetComponent<Rigidbody>();
+		GCScrpit = GameObject.Find("GameController").GetComponent<GameController>();
 	}
 	
 	// Update is called once per frame
@@ -27,6 +29,7 @@ public class Player : MonoBehaviour {
     void OnCollisionEnter(Collision col){
         if(col.transform.name == "Item"){
             jumpPower = 800f;
+			GCScrpit.FoundAnimal(1);
             Destroy(col.gameObject);
         }
     }
