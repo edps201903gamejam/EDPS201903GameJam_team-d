@@ -15,7 +15,7 @@ public class Hata : MonoBehaviour
 		if (other.gameObject.CompareTag("Player"))
 		{
 			Debug.Log("ゲームクリア");
-			//_gameController.GameClear();
+			_gameController.GameClear();
 		}
 	}
 }

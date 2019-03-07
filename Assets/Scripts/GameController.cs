@@ -5,14 +5,6 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
-<<<<<<< HEAD
-	private float timer= 0f;
-	private int mazaiSum= 0;
-	private int CurrentAnimalNum = 0;
-	[SerializeField] private GameObject[] animalUI = new GameObject[5];
-	[SerializeField] private GameObject[] animalIcon = new GameObject[5]; //0は人なので使用しない
-	[SerializeField] private GameObject animalMode;
-=======
 	private int currentStageNum;//0はタイトル
 	private float timer;
 	private int mazaiSum;
@@ -20,7 +12,6 @@ public class GameController : MonoBehaviour {
 	private GameObject[] animalUI = new GameObject[5];
 	private GameObject[] animalIcon = new GameObject[5]; //0は人なので使用しない
 	private GameObject animalMode;
->>>>>>> UI
 	[SerializeField] private Sprite[] animalIconNone = new Sprite[5]; //0は人なので使用しない
 	[SerializeField] private Sprite[] animalIconSelect = new Sprite[5]; //0は人なので使用しない
 	[SerializeField] private Sprite[] animalModeIcon = new Sprite[5];
@@ -65,11 +56,8 @@ public class GameController : MonoBehaviour {
 	//動物を切り替えたときにプレイヤーが実行,UIの切り替えをする
 	public void CurrentAnimal(int a) {
 		animalMode.GetComponent<Image>().sprite = animalModeIcon[a];
-<<<<<<< HEAD
-=======
 		playerAnimetor.SetInteger("Index", a);
-		if (a!=0) animalIcon[a].GetComponent<Image>().sprite = animalIconSelect[a];
->>>>>>> UI
+
 		if (CurrentAnimalNum != 0) animalIcon[CurrentAnimalNum].GetComponent<Image>().sprite = animalIconNone[CurrentAnimalNum];
 		if (a!=0) animalIcon[a].GetComponent<Image>().sprite = animalIconSelect[a];
 		CurrentAnimalNum = a;
@@ -84,8 +72,10 @@ public class GameController : MonoBehaviour {
 
 	//シーンの読み込みが終わったら、実行される関数
 	void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+		Debug.Log(currentStageNum);
 		if (currentStageNum == 0) {
-			GameObject.Find("StageSelect").GetComponent<StageSelectController>().SetStageSelect();
+			GameObject SS = GameObject.Find("StageSelect");
+			SS.GetComponent<StageSelectController>().SetStageSelect();
 		}
 		if (0 < currentStageNum) {
 			Debug.Log(scene.name + " scene loaded");
@@ -103,12 +93,14 @@ public class GameController : MonoBehaviour {
 
 
 	public void GameClear() {
+		currentStageNum = -1;
 		_clearStage[currentStageNum-1] = true;
 		SceneManager.LoadScene("GameClear", LoadSceneMode.Additive);
 		Time.timeScale = 0;
 	}
 
 	public void GameOver() {
+		currentStageNum = -1;
 		SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
 		Time.timeScale = 0;
 	}

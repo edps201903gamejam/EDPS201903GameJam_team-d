@@ -16,7 +16,7 @@ public class Hari : MonoBehaviour
 		if (other.gameObject.CompareTag("Player"))
 		{
 			Debug.Log("GameOver");
-			// _gameController.GameOver();
+			_gameController.GameOver();
 		}
 	}
 }
