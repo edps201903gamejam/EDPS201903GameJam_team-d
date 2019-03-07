@@ -32,7 +32,7 @@ public class PlayerController : MonoBehaviour
 			_canJump = false;
 		}
 		FormChangeDetection(4);
-		_rigidbody.AddForce(hInput * _speed, _jumpPower * up, 0);
+		_rigidbody.AddForce(hInput * _speed * Time.fixedDeltaTime * 50, _jumpPower * up * Time.fixedDeltaTime * 50, 0);
 	}
 
 	private void OnCollisionEnter(Collision other)
@@ -41,12 +41,13 @@ public class PlayerController : MonoBehaviour
 		{
 			_canJump = true;
 		}
+
 	}
 
-	private void FoundAnimal(int index)
+	private void WhenFoundAnimal(int index)
 	{
 		_foundAnimal[index] = true;
-		// Transform.FindObjectOfType<GameController>().FoundAnimal();
+		// Transform.FindObjectOfType<GameController>().FoundAnimal(index);
 	}
 	
 	private void FormChangeDetection(int max)
@@ -77,4 +78,10 @@ public class PlayerController : MonoBehaviour
 		}
 	}
 	
+	// getter, setter
+	public bool[] FoundAnimal
+	{
+		get { return _foundAnimal; }
+		set { _foundAnimal = value; }
+	}
 }
