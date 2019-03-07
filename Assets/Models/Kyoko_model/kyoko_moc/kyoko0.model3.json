@@ -1,0 +1,9 @@
+{
+	"Version": 3,
+	"FileReferences": {
+		"Moc": "kyoko0.moc3",
+		"Textures": [
+			"kyoko0.2048/texture_00.png"
+		]
+	}
+}
