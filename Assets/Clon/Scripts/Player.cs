@@ -29,7 +29,7 @@ public class Player : MonoBehaviour {
     void OnCollisionEnter(Collision col){
         if(col.transform.name == "Item"){
             jumpPower = 800f;
-			GCScrpit.FoundAnimal(1);
+			GCScrpit.FoundAnimal(2);
             Destroy(col.gameObject);
         }
     }
