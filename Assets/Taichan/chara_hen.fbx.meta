@@ -9,6 +9,12 @@ ModelImporter:
     2300000: //RootNode
     3300000: //RootNode
     4300000: "\u7403"
+<<<<<<< HEAD:Assets/Taichan/chara_hen.fbx.meta
+=======
+    7400000: Default Take
+    9500000: //RootNode
+    2186277476908879412: ImportLogs
+>>>>>>> clon-branch:Assets/Taichan/chara.blend.meta
   externalObjects: {}
   materials:
     importMaterials: 1

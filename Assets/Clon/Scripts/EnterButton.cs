@@ -12,7 +12,7 @@ public class EnterButton : MonoBehaviour {
 	public void Update() {
 		if (Input.GetKeyDown(KeyCode.Return)) {
 			transform.parent.parent.gameObject.SetActive(false);
-			GameObject.Find("GameController").GetComponent<GameController>().DisplayUI = -1;
+			//GameObject.Find("GameController").GetComponent<GameController>().DisplayUI = -1;
 		}
 	}
 }
