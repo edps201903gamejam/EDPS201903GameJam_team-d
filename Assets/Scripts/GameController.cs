@@ -33,9 +33,6 @@ public class GameController : MonoBehaviour {
 
 	void Update () {
 		timer += Time.deltaTime;
-		if (Input.GetKey(KeyCode.O)) {
-			GameClear();
-		}
 	}
 
 	//新しい動物を見つけたときにプレイヤーが実行
