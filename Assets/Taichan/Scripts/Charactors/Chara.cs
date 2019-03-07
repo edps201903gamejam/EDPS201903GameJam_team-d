@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Chara : MonoBehaviour {
 	[SerializeField] private float additionalGravity = 0;
-	[SerializeField] private float jumpPower = 3000;
+	[SerializeField] private float jumpPower = 200;
 	[SerializeField] private float horizontalSpeed = 20;
 
 	public float AdditionalGravity
