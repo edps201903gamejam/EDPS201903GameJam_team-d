@@ -268,7 +268,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &108383877
 RectTransform:
   m_ObjectHideFlags: 0
@@ -436,13 +436,14 @@ GameObject:
   - component: {fileID: 348319548}
   - component: {fileID: 348319547}
   - component: {fileID: 348319546}
+  - component: {fileID: 348319549}
   m_Layer: 5
   m_Name: Stage2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &348319545
 RectTransform:
   m_ObjectHideFlags: 0
@@ -502,7 +503,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 348319549}
         m_MethodName: OnClick
         m_Mode: 1
         m_Arguments:
@@ -549,6 +550,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 348319544}
   m_CullTransparentMesh: 0
+--- !u!114 &348319549
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 348319544}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d6f8a3a4d6104f399091344223f55d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &454652822
 GameObject:
   m_ObjectHideFlags: 0

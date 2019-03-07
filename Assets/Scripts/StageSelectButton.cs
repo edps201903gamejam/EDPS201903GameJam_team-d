@@ -8,6 +8,6 @@ public class StageSelectButton : MonoBehaviour {
 		GetComponent<Button>().interactable = false;
 		GC = GameObject.Find("GameController");
 		GameController gameController = GC.GetComponent<GameController>();
-		gameController.ChangeStage(1);
+		gameController.ChangeStage(int.Parse(transform.name.Replace("Stage", "")));
 	}
 }
