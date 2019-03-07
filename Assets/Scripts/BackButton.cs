@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class BackButton : MonoBehaviour {
+	GameObject GC;
 	public void OnClick () {
 		Time.timeScale = 1;
-		SceneManager.LoadScene("Title");
+		GC = GameObject.Find("GameController");
+		GameController gameController = GC.GetComponent<GameController>();
+		gameController.ChangeStage(0);
 	}
 }

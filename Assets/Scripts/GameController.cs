@@ -5,39 +5,42 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameController : MonoBehaviour {
+	private int currentStageNum;//0はタイトル
 	private float timer;
 	private int mazaiSum;
 	private int CurrentAnimalNum;
-	[SerializeField] private GameObject[] animalUI = new GameObject[5];
-	[SerializeField] private GameObject[] animalIcon = new GameObject[5]; //0は人なので使用しない
-	[SerializeField] private GameObject animalMode;
+	private GameObject[] animalUI = new GameObject[5];
+	private GameObject[] animalIcon = new GameObject[5]; //0は人なので使用しない
+	private GameObject animalMode;
 	[SerializeField] private Sprite[] animalIconNone = new Sprite[5]; //0は人なので使用しない
 	[SerializeField] private Sprite[] animalIconSelect = new Sprite[5]; //0は人なので使用しない
 	[SerializeField] private Sprite[] animalModeIcon = new Sprite[5];
-	[SerializeField] private Animator playerAnimetor;
+	private Animator playerAnimetor;
 
-
-	private bool[] foundAnimal = new bool[5];
+	private bool[] _foundAnimal = new bool[5];
+	private bool[] _clearStage = new bool[3];
 	public int DisplayUI = -1;//-1だったら表示されていない。
-
-	void Start () {
-
+	void Awake() {
+		if(1 < GameObject.FindGameObjectsWithTag("GameController").Length) {
+			Destroy(this.gameObject);
+		}
+		DontDestroyOnLoad(this);
 	}
+	private void Start() {
 
+		SceneManager.sceneLoaded += OnSceneLoaded;
+	}
 
 	void Update () {
 		timer += Time.deltaTime;
-		if (Input.GetKeyDown(KeyCode.P)) {
-			GameOver();
-		}
-		if (Input.GetKeyDown(KeyCode.O)) {
+		if (Input.GetKey(KeyCode.O)) {
 			GameClear();
 		}
 	}
 
 	//新しい動物を見つけたときにプレイヤーが実行
 	public void FoundAnimal(int a) {
-		foundAnimal[a] = true;
+		_foundAnimal[a] = true;
 		DisplayUI = a;
 		if(DisplayUI != -1) {
 			animalUI[DisplayUI].SetActive(false);
@@ -62,7 +65,35 @@ public class GameController : MonoBehaviour {
 		CurrentAnimalNum = a;
 	}
 
+	//シーン切り替え用関数
+	public void ChangeStage(int s) {
+		currentStageNum = s;
+		if (s == 0) SceneManager.LoadScene("Title");
+		else SceneManager.LoadScene("Stage" + s.ToString());
+	}
+
+	//シーンの読み込みが終わったら、実行される関数
+	void OnSceneLoaded(Scene scene, LoadSceneMode mode) {
+		if (currentStageNum == 0) {
+			GameObject.Find("StageSelect").GetComponent<StageSelectController>().SetStageSelect();
+		}
+		if (0 < currentStageNum) {
+			Debug.Log(scene.name + " scene loaded");
+			Debug.Log(SceneManager.GetActiveScene());
+			playerAnimetor = GameObject.Find("kyoko0").GetComponent<Animator>();
+			animalMode = GameObject.Find("Canvas/PlayerStatus/ModeIcon");
+			GameObject au = GameObject.Find("Canvas/Animal");
+			GameObject ai = GameObject.Find("Canvas/PlayerStatus/AnimalIcon");
+			for (int i = 0; i < 5; i++) {
+				animalUI[i] = au.transform.GetChild(i).gameObject;
+				if (i != 4) animalIcon[i+1] = ai.transform.GetChild(i).gameObject;
+			}
+		}
+	}
+
+
 	public void GameClear() {
+		_clearStage[currentStageNum-1] = true;
 		SceneManager.LoadScene("GameClear", LoadSceneMode.Additive);
 		Time.timeScale = 0;
 	}
@@ -70,5 +101,17 @@ public class GameController : MonoBehaviour {
 	public void GameOver() {
 		SceneManager.LoadScene("GameOver", LoadSceneMode.Additive);
 		Time.timeScale = 0;
+	}
+
+	public bool[] FoundAnimalList {
+		get {
+			return _foundAnimal;
+		}
+	}
+
+	public bool[] ClearStageList {
+		get {
+			return _clearStage;
+		}
 	}
 }

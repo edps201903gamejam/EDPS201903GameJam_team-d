@@ -4,8 +4,11 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class RetryButton : MonoBehaviour {
+	GameObject GC;
 	public void OnClick() {
 		Time.timeScale = 1;
-		SceneManager.LoadScene("Stage1");
+		GC = GameObject.Find("GameController");
+		GameController gameController = GC.GetComponent<GameController>();
+		gameController.ChangeStage(1);
 	}
 }
