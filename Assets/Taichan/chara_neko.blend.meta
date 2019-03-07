@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: b9e3bddbb3d6641e585026d3874a650a
+guid: a872fff9028e0448f847f1f8ed5d3d0a
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
-    100000: Camera
-    100002: //RootNode
-    100004: Lamp
-    100006: "\u5186\u9310"
-    400000: Camera
-    400002: //RootNode
-    400004: Lamp
-    400006: "\u5186\u9310"
-    2000000: Camera
-    2100000: No Name
-    2300000: "\u5186\u9310"
-    3300000: "\u5186\u9310"
-    4300000: "\u5186\u9310"
-    10800000: Lamp
+    100000: //RootNode
+    400000: //RootNode
+    2100000: unnamed
+    2300000: //RootNode
+    3300000: //RootNode
+    4300000: "\u7403"
+    7400000: Default Take
+    9500000: //RootNode
   externalObjects: {}
   materials:
     importMaterials: 1
@@ -69,7 +63,7 @@ ModelImporter:
     secondaryUVPackMargin: 4
     useFileScale: 1
     previousCalculatedGlobalScale: 1
-    hasPreviousCalculatedGlobalScale: 0
+    hasPreviousCalculatedGlobalScale: 1
   tangentSpace:
     normalSmoothAngle: 60
     normalImportMode: 0
@@ -93,7 +87,7 @@ ModelImporter:
     hasExtraRoot: 0
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
-  animationType: 0
+  animationType: 2
   humanoidOversampling: 1
   additionalBone: 0
   userData: 

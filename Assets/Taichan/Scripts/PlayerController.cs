@@ -1,44 +1,80 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
+using UnityEditor.Animations;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
 	private Rigidbody _rigidbody;
-	[SerializeField] private int speed = 20;
-	[SerializeField] private int jumpPower = 200;
-	private bool canJump = true;
-	private bool canMoveH = true;
-	private int up = 0;
+	private Transform _transform;
+	private float _speed = 20;
+	private float _jumpPower = 200;
+	private bool _canJump = true;
+	private bool[] _foundAnimal = Enumerable.Repeat<bool>(true, 5).ToArray();
 	private void Start()
 	{
+		_transform = GetComponent<Transform>();
 		_rigidbody = GetComponent<Rigidbody>();
+		_foundAnimal[0] = true;
+		_speed = GetComponent<Transform>().GetChild(0).GetComponent<Chara>().HorizontalSpeed;
+		_jumpPower = GetComponent<Transform>().GetChild(0).GetComponent<Chara>().JumpPower;
 	}
 
 	private void FixedUpdate()
 	{
 		float hInput = Input.GetAxis("Horizontal");
-		up = 0;
-		if (Input.GetKeyDown(KeyCode.Space) && canJump)
+		int up = 0;
+		if (Input.GetKeyDown(KeyCode.Space) && _canJump)
 		{
 			up = 1;
-			canJump = false;
+			_canJump = false;
 		}
-
-		_rigidbody.AddForce(hInput * speed * Convert.ToInt32(canMoveH), jumpPower * up, 0);
+		FormChangeDetection(4);
+		_rigidbody.AddForce(hInput * _speed, _jumpPower * up, 0);
 	}
 
-	private void OnCollisionEnter (Collision other)
+	private void OnCollisionEnter(Collision other)
 	{
 		if (other.gameObject.CompareTag("Floor"))
 		{
-			canJump = true;
-			canMoveH = true;
+			_canJump = true;
 		}
-//		else if(_rigidbody.velocity.y < 0.05f)
-//		{
-//			canMoveH = false;
-//		}
 	}
+
+	private void FoundAnimal(int index)
+	{
+		_foundAnimal[index] = true;
+		// Transform.FindObjectOfType<GameController>().FoundAnimal();
+	}
+	
+	private void FormChangeDetection(int max)
+	{
+		for (var i = 0; i <= max; i++)
+		{
+			if (Input.GetKeyDown(i.ToString()))
+			{
+				// Debug.Log(i.ToString()+"が押されています");
+				FormChange(i);
+			}
+		}
+	}
+	
+	public void FormChange(int index)
+	{
+		for (var i = 0; i < _transform.childCount; i++)
+		{
+			var canChange = (i == index && _foundAnimal[i]);
+			if (canChange)
+			{
+				var chara = _transform.GetChild(i).GetComponent<Chara>();
+				_speed = chara.HorizontalSpeed;
+				_jumpPower = chara.JumpPower;
+				Debug.Log(chara.gameObject.name + "にキャラチェンジ");
+			}
+			if (_foundAnimal[i]) _transform.GetChild(i).gameObject.SetActive(i == index);
+		}
+	}
+	
 }
