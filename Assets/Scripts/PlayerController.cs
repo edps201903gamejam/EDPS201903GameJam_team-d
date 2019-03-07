@@ -12,7 +12,7 @@ public class PlayerController : MonoBehaviour
 	private float _speed = 20;
 	private float _jumpPower = 200;
 	private bool _canJump = true;
-	private bool[] _foundAnimal = Enumerable.Repeat<bool>(true, 5).ToArray();
+	private bool[] _foundAnimal = Enumerable.Repeat<bool>(false, 5).ToArray();
 	private GameController _gameController;
 	private void Start()
 	{
@@ -22,6 +22,7 @@ public class PlayerController : MonoBehaviour
 		_speed = GetComponent<Transform>().GetChild(0).GetComponent<Chara>().HorizontalSpeed;
 		_jumpPower = GetComponent<Transform>().GetChild(0).GetComponent<Chara>().JumpPower;
 		_gameController = Transform.FindObjectOfType<GameController>();
+		_gameController.CurrentAnimal(0);
 	}
 
 	private void FixedUpdate()
@@ -46,7 +47,7 @@ public class PlayerController : MonoBehaviour
 
 	}
 
-	private void WhenFoundAnimal(int index)
+	public void WhenFoundAnimal(int index)
 	{
 		_foundAnimal[index] = true;
 		_gameController.FoundAnimal(index);
@@ -60,13 +61,13 @@ public class PlayerController : MonoBehaviour
 			{
 				// Debug.Log(i.ToString()+"が押されています");
 				FormChange(i);
-				_gameController.CurrentAnimal(i);
 			}
 		}
 	}
 	
 	public void FormChange(int index)
 	{
+		var changeDone = false;
 		for (var i = 0; i < _transform.childCount; i++)
 		{
 			var canChange = (i == index && _foundAnimal[i]);
@@ -76,8 +77,14 @@ public class PlayerController : MonoBehaviour
 				_speed = chara.HorizontalSpeed;
 				_jumpPower = chara.JumpPower;
 				Debug.Log(chara.gameObject.name + "にキャラチェンジ");
+				_gameController.CurrentAnimal(index);
+				changeDone = true;
 			}
-			if (_foundAnimal[i]) _transform.GetChild(i).gameObject.SetActive(i == index);
+		}
+		
+		for (var i = 0; i < _transform.childCount; i++)
+		{
+			if (_foundAnimal[i] && changeDone) _transform.GetChild(i).gameObject.SetActive(i == index);
 		}
 	}
 	

@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Floor
   - Mazai
+  - Item
   layers:
   - Default
   - TransparentFX

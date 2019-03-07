@@ -4,9 +4,9 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class GameController : MonoBehaviour {
-	private float timer;
-	private int mazaiSum;
-	private int CurrentAnimalNum;
+	private float timer= 0f;
+	private int mazaiSum= 0;
+	private int CurrentAnimalNum = 0;
 	[SerializeField] private GameObject[] animalUI = new GameObject[5];
 	[SerializeField] private GameObject[] animalIcon = new GameObject[5]; //0は人なので使用しない
 	[SerializeField] private GameObject animalMode;
@@ -48,8 +48,8 @@ public class GameController : MonoBehaviour {
 	//動物を切り替えたときにプレイヤーが実行,UIの切り替えをする
 	public void CurrentAnimal(int a) {
 		animalMode.GetComponent<Image>().sprite = animalModeIcon[a];
-		if (a!=0) animalIcon[a].GetComponent<Image>().sprite = animalIconSelect[a];
 		if (CurrentAnimalNum != 0) animalIcon[CurrentAnimalNum].GetComponent<Image>().sprite = animalIconNone[CurrentAnimalNum];
+		if (a!=0) animalIcon[a].GetComponent<Image>().sprite = animalIconSelect[a];
 		CurrentAnimalNum = a;
 	}
 
