@@ -76,6 +76,7 @@ public class PlayerController : MonoBehaviour
 				_speed = chara.HorizontalSpeed;
 				_jumpPower = chara.JumpPower;
 				Debug.Log(chara.gameObject.name + "にキャラチェンジ");
+				_gameController.CurrentAnimal(i);
 			}
 			if (_foundAnimal[i]) _transform.GetChild(i).gameObject.SetActive(i == index);
 		}
