@@ -48,8 +48,8 @@ public class GameController : MonoBehaviour {
 	//動物を切り替えたときにプレイヤーが実行,UIの切り替えをする
 	public void CurrentAnimal(int a) {
 		animalMode.GetComponent<Image>().sprite = animalModeIcon[a];
-		animalIcon[a].GetComponent<Image>().sprite = animalIconSelect[a];
-		animalIcon[CurrentAnimalNum].GetComponent<Image>().sprite = animalIconNone[CurrentAnimalNum];
+		if (a!=0) animalIcon[a].GetComponent<Image>().sprite = animalIconSelect[a];
+		if (CurrentAnimalNum != 0) animalIcon[CurrentAnimalNum].GetComponent<Image>().sprite = animalIconNone[CurrentAnimalNum];
 		CurrentAnimalNum = a;
 	}
 

@@ -7,7 +7,7 @@ public class MazaiController : MonoBehaviour {
 	{
 		if (other.gameObject.CompareTag("Player"))
 		{
-			// Transform.FindObjectOfType<GameController>().FoundMazai();
+			Transform.FindObjectOfType<GameController>().FoundMazai();
 			Destroy(this.gameObject);
 		}
 	}

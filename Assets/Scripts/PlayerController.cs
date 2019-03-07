@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
 	private float _jumpPower = 200;
 	private bool _canJump = true;
 	private bool[] _foundAnimal = Enumerable.Repeat<bool>(true, 5).ToArray();
+	private GameController _gameController;
 	private void Start()
 	{
 		_transform = GetComponent<Transform>();
@@ -20,6 +21,7 @@ public class PlayerController : MonoBehaviour
 		_foundAnimal[0] = true;
 		_speed = GetComponent<Transform>().GetChild(0).GetComponent<Chara>().HorizontalSpeed;
 		_jumpPower = GetComponent<Transform>().GetChild(0).GetComponent<Chara>().JumpPower;
+		_gameController = Transform.FindObjectOfType<GameController>();
 	}
 
 	private void FixedUpdate()
@@ -47,7 +49,7 @@ public class PlayerController : MonoBehaviour
 	private void WhenFoundAnimal(int index)
 	{
 		_foundAnimal[index] = true;
-		// Transform.FindObjectOfType<GameController>().FoundAnimal(index);
+		_gameController.FoundAnimal(index);
 	}
 	
 	private void FormChangeDetection(int max)
@@ -58,6 +60,7 @@ public class PlayerController : MonoBehaviour
 			{
 				// Debug.Log(i.ToString()+"が押されています");
 				FormChange(i);
+				_gameController.CurrentAnimal(i);
 			}
 		}
 	}
