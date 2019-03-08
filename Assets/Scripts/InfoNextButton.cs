@@ -2,17 +2,18 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class EnterButton : MonoBehaviour {
+public class InfoNextButton : MonoBehaviour {
 
 	public void OnClick() {
+		transform.parent.gameObject.SetActive(false);
 		transform.parent.parent.gameObject.SetActive(false);
-		GameObject.Find("GameController").GetComponent<GameController>().DisplayUI = -1;
-
-    }
+		transform.parent.parent.GetChild(1).gameObject.SetActive(true);
+	}
 	public void Update() {
 		if (Input.GetKeyDown(KeyCode.Return)) {
+			transform.parent.gameObject.SetActive(false);
 			transform.parent.parent.gameObject.SetActive(false);
-			GameObject.Find("GameController").GetComponent<GameController>().DisplayUI = -1;
+			transform.parent.parent.GetChild(1).gameObject.SetActive(true);
 		}
 	}
 }
