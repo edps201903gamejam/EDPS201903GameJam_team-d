@@ -26,8 +26,9 @@ public class GameController : MonoBehaviour {
 		}
 		DontDestroyOnLoad(this);
 	}
-	private void Start() {
-
+	private void Start()
+	{
+		_foundAnimal[0] = true;
 		SceneManager.sceneLoaded += OnSceneLoaded;
 	}
 
@@ -93,8 +94,8 @@ public class GameController : MonoBehaviour {
 
 
 	public void GameClear() {
-		currentStageNum = -1;
 		_clearStage[currentStageNum-1] = true;
+		currentStageNum = -1;
 		SceneManager.LoadScene("GameClear", LoadSceneMode.Additive);
 		Time.timeScale = 0;
 	}

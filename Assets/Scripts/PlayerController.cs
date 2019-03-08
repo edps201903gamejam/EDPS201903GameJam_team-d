@@ -14,6 +14,8 @@ public class PlayerController : MonoBehaviour
 	private bool _canJump = true;
 	private bool[] _foundAnimal = Enumerable.Repeat<bool>(false, 5).ToArray();
 	private GameController _gameController;
+	private int currentAnimal = 0;
+	
 	private void Start()
 	{
 		_transform = GetComponent<Transform>();
@@ -23,6 +25,7 @@ public class PlayerController : MonoBehaviour
 		_jumpPower = GetComponent<Transform>().GetChild(0).GetComponent<Chara>().JumpPower;
 		_gameController = Transform.FindObjectOfType<GameController>();
 		_gameController.CurrentAnimal(0);
+		_foundAnimal = _gameController.FoundAnimalList;
 	}
 
 	private void FixedUpdate()
@@ -77,6 +80,8 @@ public class PlayerController : MonoBehaviour
 				_speed = chara.HorizontalSpeed;
 				_jumpPower = chara.JumpPower;
 				Debug.Log(chara.gameObject.name + "にキャラチェンジ");
+				if (currentAnimal == 1 && index != 1) _transform.position += Vector3.up * 2;
+				currentAnimal = index;
 				_gameController.CurrentAnimal(index);
 				changeDone = true;
 			}
@@ -93,5 +98,10 @@ public class PlayerController : MonoBehaviour
 	{
 		get { return _foundAnimal; }
 		set { _foundAnimal = value; }
+	}
+
+	public int CurrentAnimal
+	{
+		get { return currentAnimal; }
 	}
 }

@@ -11,10 +11,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 403ae2dd693bb1d4b924f6b8d206b053, type: 3}
   m_Name: Kyoko_model.fadeMotionList
   m_EditorClassIdentifier: 
-  MotionInstanceIds: 6281f5ff5681f5ff4e81f5ff4681f5ff3e81f5ff
+  MotionInstanceIds: 6281f5ff5681f5ff4e81f5ff4681f5ff3e81f5ffe0c000003ec000002cbc0000
   CubismFadeMotionObjects:
   - {fileID: 11400000, guid: f170d5450ae2b4de0959faabc9111ca6, type: 2}
   - {fileID: 11400000, guid: 4e665d2e7e50746348f666e473522ec4, type: 2}
   - {fileID: 11400000, guid: 4b45368db7ce1401d9e6e7f82f76e1ac, type: 2}
   - {fileID: 11400000, guid: 8a94ea7d8fdc449f7849d6ba4f994e44, type: 2}
   - {fileID: 11400000, guid: e9a5589ed2d9d4b4699b40a7a9420e8f, type: 2}
+  - {fileID: 11400000, guid: f170d5450ae2b4de0959faabc9111ca6, type: 2}
+  - {fileID: 11400000, guid: 4e665d2e7e50746348f666e473522ec4, type: 2}
+  - {fileID: 11400000, guid: 4b45368db7ce1401d9e6e7f82f76e1ac, type: 2}
