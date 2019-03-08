@@ -125,7 +125,6 @@ public class GameController : MonoBehaviour {
 
 	public void GameClear() {
 		_clearStage[currentStageNum-1] = true;
-		currentStageNum = -1;
 		SceneManager.LoadScene("GameClear", LoadSceneMode.Additive);
 		Time.timeScale = 0;
 	}
